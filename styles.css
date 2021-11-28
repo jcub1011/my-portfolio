@@ -3,6 +3,10 @@ Gradients from https://cssgradient.io/
 Triangles from https://marcbruederlin.github.io/particles.js/
 */
 
+* {
+    box-sizing: border-box;
+}
+
 body {
     /*
     References:
@@ -11,16 +15,20 @@ body {
     font-family: 'Shippori Antique', sans-serif;
     background-color: #FCF7F8;
     margin: 0px;
-}
-
-* {
-    box-sizing: border-box;
+    overflow-x: hidden;
 }
 
 .sparklyBg {
     position: absolute;
     top: 0px;
     left: 0px;
+    animation-name: sparkle-fade-in;
+    animation-duration: .5s;
+}
+
+@keyframes sparkle-fade-in {
+    0% {opacity: 0%;}
+    100% {opacity: 100%;}
 }
 
 .website-head {
@@ -35,11 +43,21 @@ body {
     color: #FCF7F8;
     top: 0px;
     left: 0px;
-    display: table;
+    display: none;
     text-align: center;
     width: 100%;
     clip-path: polygon(0% 0%, calc(100% - 55px) 0%, 100% calc(55px), 
     100% 100%, calc(55px) 100%, 0% calc(100% - 55px));
+    animation-name: head-load-animation;
+    animation-duration: .5s;
+}
+
+@keyframes head-load-animation {
+    0% {clip-path: polygon(0% 0%, calc(100%) 0%, 100% calc(0px), 
+        100% 100%, calc(0px) 100%, 0% calc(100%));}
+
+    100% {clip-path: polygon(0% 0%, calc(100% - 55px) 0%, 100% calc(55px), 
+        100% 100%, calc(55px) 100%, 0% calc(100% - 55px));}
 }
 
 .website-head h1 {
@@ -53,11 +71,12 @@ body {
     width: 100%;
     top: 0px;
     z-index: 99;
-    display: flex;
+    display: none;
     flex-direction: column;
     height: auto;
     position: relative;
     overflow: hidden;
+    background-color: #FCF7F8;
 }
 
 .navigation-bar-border {
@@ -147,6 +166,53 @@ body {
     justify-content: center;
 }
 
+@keyframes fade-in {
+    0% {opacity: 0%;}
+    100% {opacity: 100%;}
+}
+
+@keyframes shrink {
+    0% {width: 100%;
+        clip-path: polygon(0% 0%, calc(100% - 0px) 0%, 100% calc(0px), 
+        100% 100%, calc(0px) 100%, 0% calc(100% - 0px));}
+    100% {width: 30%;
+        clip-path: polygon(0% 0%, calc(100% - 30px) 0%, 100% calc(30px), 
+        100% 100%, calc(30px) 100%, 0% calc(100% - 30px));}
+}
+
+@keyframes shrink-large {
+    0% {width: 100%;
+        clip-path: polygon(0% 0%, calc(100% - 0px) 0%, 100% calc(0px), 
+        100% 100%, calc(0px) 100%, 0% calc(100% - 0px));}
+    100% {width: 20%;
+        clip-path: polygon(0% 0%, calc(100% - 30px) 0%, 100% calc(30px), 
+        100% 100%, calc(30px) 100%, 0% calc(100% - 30px));}
+}
+
+.row-header {
+    display: none;
+    width: 30%;
+    height: 100%;
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+    clip-path: polygon(0% 0%, calc(100% - 30px) 0%, 100% calc(30px), 
+    100% 100%, calc(30px) 100%, 0% calc(100% - 30px));
+    animation-name: shrink;
+    animation-duration: .5s;
+    opacity: 0;
+}
+
+.left-red {
+    background-color: #DB162F;
+    color: #FCF7F8;
+}
+
+.left-white {
+    background-color: #FCF7F8;
+    color: #0A122A;
+}
+
 .right {
     position: relative;
     flex: 70%;
@@ -162,10 +228,14 @@ h2 {
 }
 
 .row {
-    display: flex;
+    display: none;
     flex-wrap: wrap;
     flex-direction: column;
     background: rgb(251,139,36);
+    opacity: 100%;
+    position: relative;
+    animation-name: fade-in;
+    animation-duration: .5s;
 }
 
 @media screen and (min-width: 440px) {
@@ -193,6 +263,9 @@ h2 {
     .row {
         flex-direction: row;
     }
+    .row-header {
+        opacity: 1;
+    }
 }
 
 @media screen and (min-width: 1200px) {
@@ -211,5 +284,9 @@ h2 {
     .right {
         flex: 80%;
         padding-right: 40%;
+    }
+    .row-header {
+        animation-name: shrink-large;
+        width: 20%;
     }
 }

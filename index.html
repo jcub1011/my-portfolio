@@ -1,80 +1,109 @@
 <!DOCTYPE html>
 <html>
+
+<head>
+	<title>Homepage</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="https://fonts.googleapis.com/css2?family=Shippori+Antique&display=swap" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="styles.css">
+
 	<head>
-		<title>Homepage</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link href="https://fonts.googleapis.com/css2?family=Shippori+Antique&display=swap" rel="stylesheet"> 
-		<link rel="stylesheet" type="text/css" href="styles.css">
-	<head>
-	
+
 	<body>
-<div class="website-head">
-	<h1>Welcome to my Portfolio!</h1>
-	<p>Click any of the links below to browse.</p>
-</div>
+		<div id="head" class="website-head">
+			<h1>Welcome to my Portfolio!</h1>
+			<p>Click any of the links below to browse.</p>
+		</div>
 
-<div class="navigation-bar">
-	<canvas class="sparklyBg"></canvas>
-	<div class="navigation-bar-border"></div>
+		<div id="nav" class="navigation-bar">
+			<canvas id="sparkle" class="sparklyBg"></canvas>
+			<div class="navigation-bar-border"></div>
 
-	<a href="index.html" class="current">
-		Home
-	</a>
-	<a href="index.html" class="not-current">
-		A link
-	</a>
-	<a href="index.html" class="not-current">
-		another link
-	</a>
-</div>
+			<a href="index.html" class="current">
+				Home
+			</a>
+			<a href="index.html" class="not-current">
+				A link
+			</a>
+			<a href="index.html" class="not-current">
+				another link
+			</a>
+		</div>
 
-<div class="row">
-	<div class="left-main">
-		<h2>About Me</h2>
-	</div>
-	<div class="right">
-		I'm a student at FGCU who is currently majoring in software engineering.<br>
-		I've been excited for and passionate about coding since I came across Scratch
-		in middle school. Being able to control the computer was one of the coolest
-		things to me back then and still manages to amaze me to this day.<br>
-	</div>
-</div>
+		<div id="first" class="row">
+			<div class="left-main">
+				<h2>About Me</h2>
+			</div>
+			<div class="right">
+				I'm a student at FGCU who is currently majoring in software engineering.<br>
+				I've been excited for and passionate about coding since I came across Scratch
+				in middle school. Being able to control the computer was one of the coolest
+				things to me back then and still manages to amaze me to this day.<br>
+			</div>
+			<div id="left-header-first" class="row-header left-white"><h2>About Me</h2></div>
+		</div>
 
-<div class="row">
-	<div class="left">
-		<h2>Background</h2>
-	</div>
-	<div class="right">
-		I am currently certified in <b>Microsoft Office</b>, <b>Adobe Photoshop</b>, 
-		and <b>Adobe Illustrator</b>.<br>
-		I major in Software Engineering at FGCU and plan to graduate in spring 2025.<br>
-		I have experience in <b>programming</b>, <b>web development</b>, 
-	<b>digital design</b>, and <b>software engineering</b>.<br>
-	</div>
-</div>
+		<div id="second" class="row">
+			<div class="left">
+				<h2>Background</h2>
+			</div>
+			<div class="right">
+				I am currently certified in <b>Microsoft Office</b>, <b>Adobe Photoshop</b>,
+				and <b>Adobe Illustrator</b>.<br>
+				I major in Software Engineering at FGCU and plan to graduate in spring 2025.<br>
+				I have experience in <b>programming</b>, <b>web development</b>,
+				<b>digital design</b>, and <b>software engineering</b>.
+			</div>
+			<div id="left-header-second" class="row-header left-red"><h2>Background</h2></div>
+		</div>
 
-<script type="text/javascript" src="particles.min.js"></script>
-<script type="text/javascript">
-	window.onload = function() {
-		Particles.init({
-			selector: '.sparklyBg',
-			maxParticles: 40,
-			speed: 0.1,
-			minDistance: 30,
-			connectParticles: true,
-			color: '#0A122A',
+		<script>
 
-			responsive: [
-				{
-					breakpoint: 440,
-					options: {
-						maxParticles: 0
-					}
+			const $ = function (id) { return document.getElementById(id); };
+			// Shorthand from https://stackoverflow.com/
+			// questions/6398787/javascript-shorthand-for-getelementbyid
+
+			const animateList = ["first", "second"];
+
+			window.onload = load();
+
+			function load() {
+				$("head").style.display = "block";
+
+				$("nav").style.display = "flex";
+
+				for (let index = 0; index < animateList.length; index++) {
+					setTimeout(function () {
+						$(animateList[index]).style.display = "flex";
+						$("left-header-" + animateList[index]).style.display = "flex";
+					}, 100 * index)
 				}
-			]
-		});
-	};
-</script>
+			}
+
+		</script>
+
+		<script type="text/javascript" src="particles.min.js"></script>
+		<script type="text/javascript">
+			window.onload = function () {
+				Particles.init({
+					selector: '.sparklyBg',
+					maxParticles: 40,
+					speed: 0.1,
+					minDistance: 30,
+					connectParticles: true,
+					color: '#0A122A',
+
+					responsive: [
+						{
+							breakpoint: 440,
+							options: {
+								maxParticles: 0
+							}
+						}
+					]
+				});
+			};
+		</script>
 
 	</body>
-<html>
+	<html>
