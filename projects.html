@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Projects</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="https://fonts.googleapis.com/css2?family=Shippori+Antique&display=swap" rel="stylesheet">
+	<link rel="stylesheet" type="text/css" href="styles.css">
+
+	<head>
+
+	<body>
+		<div id="head" class="website-head">
+			<h1>Here's a list of all the projects I've worked on!</h1>
+			<p>The images are links to my github.</p>
+		</div>
+
+		<div id="nav" class="navigation-bar">
+			<canvas id="sparkle" class="sparklyBg"></canvas>
+			<div class="navigation-bar-border"></div>
+
+			<a href="index.html" class="not-current">
+				Home
+			</a>
+			<a href="projects.html" class="current">
+				Projects
+			</a>
+		</div>
+
+        <div id="first" class="row">
+			<div class="left-main">
+				<h2>A Simple Calculator</h2>
+			</div>
+            <div class="right-container">
+                <div class="right">
+                    <h1>From: Foundations of programming - COP 1500</h1><br>
+                    COP 1500 is an introductory course for object oriented programming,
+                    data structures, computer architechture, operating systems, and
+                    software design.<br>
+                    <a href="https://sites.google.com/site/profvanselow/course/cop-1500">
+                        Professor's Website
+                    </a>
+                    <p>
+                        It takes naturally typed calculator questions and returns the result.
+                        <br>
+                        It also tells the user if there are any problems with the question
+                        they typed if evaluation fails and what said problems are.
+                    </p>
+                </div>
+                <div class="right">
+                    <a href="https://github.com/jcub1011/Simple_Calculator">
+                        <img src="Demonstration.gif" class="project-image">
+                    </a><br>
+                    <a href="https://github.com/jcub1011/Simple_Calculator">
+                        My calculator in action.
+                    </a>
+                </div>
+            </div>
+            <div id="left-header-first" class="row-header left-white">
+                <h2>A Simple Calculator</h2>
+            </div>
+		</div>
+
+		<script>
+            
+			const $ = function (id) { return document.getElementById(id); };
+			// Shorthand from https://stackoverflow.com/
+			// questions/6398787/javascript-shorthand-for-getelementbyid
+
+			const animateList = ["first"];
+
+			window.onload = load();
+
+			function load() {
+				$("head").style.display = "block";
+
+				$("nav").style.display = "flex";
+                
+				for (let index = 0; index < animateList.length; index++) {
+					setTimeout(function () {
+						$(animateList[index]).style.display = "flex";
+						$("left-header-" + animateList[index]).style.display = "flex";
+					}, 100 * index)
+				}
+                
+			}
+            
+		</script>
+
+		<script type="text/javascript" src="particles.min.js"></script>
+		<script type="text/javascript">
+			window.onload = function () {
+				Particles.init({
+					selector: '.sparklyBg',
+					maxParticles: 40,
+					speed: 0.1,
+					minDistance: 30,
+					connectParticles: true,
+					color: '#0A122A',
+
+					responsive: [
+						{
+							breakpoint: 440,
+							options: {
+								maxParticles: 0
+							}
+						}
+					]
+				});
+			};
+		</script>
+
+	</body>
+	<html>
